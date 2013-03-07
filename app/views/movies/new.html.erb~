@@ -1,0 +1,10 @@
+<h1>New movie</h1>
+           <% if current_user %>
+               
+	       <%= render 'form' %>
+	       <%= link_to 'Back', movies_path %>
+              
+           <% else %>
+		Please Sign up or Login!!!
+           <% end %>
+

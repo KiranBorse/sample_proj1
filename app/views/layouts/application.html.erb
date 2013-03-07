@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SampleProj1</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="movie">
+
+  <div id="banner">
+     <%= image_tag("images.jpg") %>
+     <h1> Movie Talk </h1>
+  </div>
+
+  <div id="columns">
+
+     <div id="side">
+        <h1> Sidebar </h1>
+     </div>  
+
+     <div id="main">
+	     <div id="user_nav">
+           <% if current_user %>
+               Logged in as <%= current_user.email %>.
+               <%= link_to "    Log out", log_out_path %>
+           <% else %>
+               <%= link_to "Sign up", sign_up_path %> or
+               <%= link_to "log in", log_in_path %>
+           <% end %>
+        </div>
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+        <%= yield %>
+     </div>
+
+  </div>
+
+</body>
+</html>

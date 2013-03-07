@@ -1,0 +1,23 @@
+<div id="movie-list">
+<h1>Movie Listing</h1>
+
+<table cellpadding="5" cellspacing="0">
+<% for movie in @movies %>
+<tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+
+  <td class="list-actions">
+        <% if current_user %>
+               <td><%= link_to movie.title, movie %></td>
+     	       <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+               <td><%= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you   sure?' } %></td>
+        <% else %>
+		<td><%= link_to movie.title, movie %></td>
+              
+	<% end %>
+   </td>
+</tr>
+<% end %>
+</table>
+</div>
+<br />
+<%= link_to 'New Movie', new_movie_path %>
